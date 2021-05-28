@@ -1,0 +1,20 @@
+{
+  "componentPath": "./src/wwElement.vue",
+  "editor": {
+    "label": {
+      "en": "reCAPTCHA"
+    },
+    "settingsOptions": {
+      "key": {
+        "label": {
+          "en": "Key"
+        },
+        "options": {
+          "placeholder": "key"
+        },
+        "type": "Text",
+        "bindable": true
+      }
+    }
+  }
+}
