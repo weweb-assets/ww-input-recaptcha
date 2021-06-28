@@ -4,6 +4,40 @@
     "label": {
       "en": "reCAPTCHA"
     },
+    "styleOptions": {
+      "theme": {
+        "label": {
+          "en": "Theme",
+          "fr": "Theme"
+        },
+        "type": "TextSelect",
+        "options": {
+          "options": [
+            {
+              "value": "light",
+              "label": { "en": "Light" }
+            },
+            { "value": "dark", "label": { "en": "Dark" } }
+          ]
+        }
+      },
+      "size": {
+        "label": {
+          "en": "Size",
+          "fr": "Size"
+        },
+        "type": "TextSelect",
+        "options": {
+          "options": [
+            {
+              "value": "normal",
+              "label": { "en": "Normal" }
+            },
+            { "value": "compact", "label": { "en": "Compact" } }
+          ]
+        }
+      }
+    },
     "settingsOptions": {
       "key": {
         "label": {

@@ -5,20 +5,27 @@
       v-if="!isHidden"
       v-show="content.key"
     ></div>
-    <div v-if="!content.key">PLACEHOLDER</div>
+    <div class="ww-recaptcha-placeholder" v-if="!content.key">
+      A reCAPTCHA key is required. You can find it here:
+      <a href="https://www.google.com/recaptcha/admin"
+        >https://www.google.com/recaptcha/admin</a
+      >
+      <br />
+      You will have to authorize "editor.weweb.io" in the domain list
+    </div>
   </div>
 </template>
 
 <script>
-// 6LfmLWAbAAAAAFIqia_-3o60fuIGuzXtJJuTVt0O : V2
-
 export default {
-  wwDefaultContent: {
-    key: "6LfmLWAbAAAAAFIqia_-3o60fuIGuzXtJJuTVt0O",
-  },
   props: {
     content: { type: "Object", required: true },
     uid: { type: String, required: true },
+  },
+  wwDefaultContent: {
+    key: "",
+    theme: "light",
+    size: "normal",
   },
   data() {
     return {
@@ -28,6 +35,26 @@ export default {
   /* wwEditor:start */
   watch: {
     "content.key"() {
+      this.isHidden = true;
+      this.$nextTick(() => {
+        this.isHidden = false;
+
+        this.$nextTick(() => {
+          this.render();
+        });
+      });
+    },
+    "content.theme"() {
+      this.isHidden = true;
+      this.$nextTick(() => {
+        this.isHidden = false;
+
+        this.$nextTick(() => {
+          this.render();
+        });
+      });
+    },
+    "content.size"() {
       this.isHidden = true;
       this.$nextTick(() => {
         this.isHidden = false;
@@ -55,22 +82,21 @@ export default {
       wwLib.getFrontDocument().head.appendChild(scriptElement);
     },
     render() {
-      console.log("hello");
       wwLib.getFrontWindow().grecaptcha.render(`ww-recaptcha-${this.uid}`, {
         sitekey: this.content.key,
-        // theme: "dark",
-        // size: "compact",
+        theme: this.content.theme,
+        size: this.content.size,
       });
     },
-    // registerOnLoad() {
-    //   wwLib.getFrontWindow()[`onRecaptchaLoad-${this.uid}`] = this.render;
-    // },
   },
   mounted() {
-    // this.registerOnLoad();
     this.addScript();
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ww-recaptcha-placeholder {
+  min-height: 70px;
+}
+</style>
