@@ -1,6 +1,6 @@
 <template>
     <div class="ww-recaptcha">
-        <div v-if="!isHidden" v-show="content.key" :id="`ww-recaptcha-${uid}`"></div>
+        <div v-if="!isHidden" v-show="content.key" :id="`ww-recaptcha-${wwElementState.uid}`"></div>
         <!-- wwEditor:start -->
         <div v-if="!content.key" class="ww-recaptcha-placeholder caption-m">
             <div>
@@ -18,7 +18,7 @@
 <script>
 export default {
     props: {
-        uid: { type: String, required: true },
+        wwElementState: { type: Object, required: true },
         content: { type: Object, required: true },
     },
     wwDefaultContent: {
@@ -49,7 +49,7 @@ export default {
     },
     methods: {
         addScript() {
-            const functionName = `onRecaptchaLoad-${this.uid}`.replace(/-/g, '');
+            const functionName = `onRecaptchaLoad-${this.wwElementState.uid}`.replace(/-/g, '');
             wwLib.getFrontWindow()[functionName] = this.render;
 
             const scriptElement = wwLib.getFrontDocument().createElement('script');
@@ -63,7 +63,7 @@ export default {
             wwLib.getFrontDocument().head.appendChild(scriptElement);
         },
         render() {
-            wwLib.getFrontWindow().grecaptcha.render(`ww-recaptcha-${this.uid}`, {
+            wwLib.getFrontWindow().grecaptcha.render(`ww-recaptcha-${this.wwElementState.uid}`, {
                 sitekey: this.content.key,
                 theme: this.content.theme,
                 size: this.content.size,
