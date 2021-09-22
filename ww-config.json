@@ -1,70 +1,70 @@
 {
-  "componentPath": "./src/wwElement.vue",
-  "editor": {
-    "label": {
-      "en": "reCAPTCHA"
-    },
-    "styleOptions": {
-      "theme": {
+    "componentPath": "./src/wwElement.vue",
+    "editor": {
         "label": {
-          "en": "Theme",
-          "fr": "Theme"
+            "en": "reCAPTCHA"
         },
-        "type": "TextSelect",
-        "options": {
-          "options": [
-            {
-              "value": "light",
-              "label": { "en": "Light" }
+        "styleOptions": {
+            "theme": {
+                "label": {
+                    "en": "Theme",
+                    "fr": "Theme"
+                },
+                "type": "TextSelect",
+                "options": {
+                    "options": [
+                        {
+                            "value": "light",
+                            "label": { "en": "Light" }
+                        },
+                        { "value": "dark", "label": { "en": "Dark" } }
+                    ]
+                }
             },
-            { "value": "dark", "label": { "en": "Dark" } }
-          ]
-        }
-      },
-      "size": {
-        "label": {
-          "en": "Size",
-          "fr": "Size"
+            "size": {
+                "label": {
+                    "en": "Size",
+                    "fr": "Size"
+                },
+                "type": "TextSelect",
+                "options": {
+                    "options": [
+                        {
+                            "value": "normal",
+                            "label": { "en": "Normal" }
+                        },
+                        { "value": "compact", "label": { "en": "Compact" } }
+                    ]
+                }
+            }
         },
-        "type": "TextSelect",
-        "options": {
-          "options": [
-            {
-              "value": "normal",
-              "label": { "en": "Normal" }
+        "settingsOptions": {
+            "name": {
+                "label": {
+                    "en": "Input name"
+                },
+                "options": {
+                    "placeholder": "Input Name"
+                },
+                "type": "Text",
+                "bindable": true
             },
-            { "value": "compact", "label": { "en": "Compact" } }
-          ]
+            "key": {
+                "label": {
+                    "en": "API Key"
+                },
+                "options": {
+                    "placeholder": "key"
+                },
+                "type": "Text",
+                "bindable": true
+            },
+            "sendResponse": {
+                "label": {
+                    "en": "send reCAPTCHA response"
+                },
+                "type": "OnOff"
+            }
         }
-      }
-    },
-    "settingsOptions": {
-      "key": {
-        "label": {
-          "en": "Key"
-        },
-        "options": {
-          "placeholder": "key"
-        },
-        "type": "Text",
-        "bindable": true
-      },
-      "name": {
-        "label": {
-          "en": "Name"
-        },
-        "options": {
-          "placeholder": "Input Name"
-        },
-        "type": "Text",
-        "bindable": true
-      },
-      "sendResponse": {
-        "label": {
-          "en": "send reCAPTCHA response"
-        },
-        "type": "onOff"
-      }
     }
-  }
 }
