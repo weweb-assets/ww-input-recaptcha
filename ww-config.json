@@ -41,10 +41,10 @@
         "settingsOptions": {
             "name": {
                 "label": {
-                    "en": "Input name"
+                    "en": "Name"
                 },
                 "options": {
-                    "placeholder": "Input Name"
+                    "placeholder": "Name"
                 },
                 "type": "Text",
                 "bindable": true
@@ -61,7 +61,7 @@
             },
             "sendResponse": {
                 "label": {
-                    "en": "send reCAPTCHA response"
+                    "en": "Send value at form submit"
                 },
                 "type": "OnOff"
             }
