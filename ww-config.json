@@ -48,6 +48,22 @@
         },
         "type": "Text",
         "bindable": true
+      },
+      "name": {
+        "label": {
+          "en": "Name"
+        },
+        "options": {
+          "placeholder": "Input Name"
+        },
+        "type": "Text",
+        "bindable": true
+      },
+      "sendResponse": {
+        "label": {
+          "en": "send reCAPTCHA response"
+        },
+        "type": "onOff"
       }
     }
   }

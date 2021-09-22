@@ -1,6 +1,12 @@
 <template>
     <div class="ww-recaptcha">
-        <div v-if="!isHidden" v-show="content.key" :id="`ww-recaptcha-${wwElementState.uid}`"></div>
+        <div
+            v-if="!isHidden"
+            v-show="content.key"
+            :id="`ww-recaptcha-${wwElementState.uid}`"
+            :name="content.name"
+            :data-send-response="content.sendResponse"
+        ></div>
         <!-- wwEditor:start -->
         <div v-if="!content.key" class="ww-recaptcha-placeholder caption-m">
             <div>
@@ -25,6 +31,8 @@ export default {
         key: '',
         theme: 'light',
         size: 'normal',
+        name: 'reCAPTCHA',
+        sendResponse: false,
     },
     data() {
         return {
