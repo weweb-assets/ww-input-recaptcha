@@ -27,13 +27,6 @@ export default {
         wwElementState: { type: Object, required: true },
         content: { type: Object, required: true },
     },
-    wwDefaultContent: {
-        key: '',
-        theme: 'light',
-        size: 'normal',
-        name: 'reCAPTCHA',
-        sendResponse: false,
-    },
     data() {
         return {
             isHidden: false,
