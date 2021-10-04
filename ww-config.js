@@ -55,7 +55,7 @@ export default {
         "key": {
             section: 'settings',
             "label": {
-                "en": "API Key"
+                "en": "Site Key"
             },
             "options": {
                 "placeholder": "key"
