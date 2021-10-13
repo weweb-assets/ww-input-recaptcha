@@ -1,7 +1,7 @@
 export default {
     "editor": {
         "label": {
-            "en": "reCAPTCHA"
+            "en": "reCAPTCHA v2"
         },
         icon: 'tick',
     },
@@ -55,7 +55,7 @@ export default {
         "key": {
             section: 'settings',
             "label": {
-                "en": "Site Key"
+                "en": "Site Key reCaptcha v2"
             },
             "options": {
                 "placeholder": "key"
