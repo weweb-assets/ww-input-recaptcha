@@ -3,7 +3,13 @@ export default {
         label: {
             en: 'reCAPTCHA v2',
         },
-        icon: 'tick',
+        icon: 'fontawesome/solid/fingerprint',
+        menuOptions: {
+            quick: {
+                label: { en: 'reCAPTCHA v2' },
+                sections: ['variable', 'theme', 'size'],
+            },
+        },
     },
     properties: {
         theme: {
