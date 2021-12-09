@@ -1,76 +1,88 @@
 export default {
-    "editor": {
-        "label": {
-            "en": "reCAPTCHA v2"
+    editor: {
+        label: {
+            en: 'reCAPTCHA v2',
         },
         icon: 'tick',
     },
     properties: {
-        "theme": {
-            "label": {
-                "en": "Theme",
-                "fr": "Theme"
+        theme: {
+            label: {
+                en: 'Theme',
+                fr: 'Theme',
             },
-            "type": "TextSelect",
-            "options": {
-                "options": [
+            type: 'TextSelect',
+            options: {
+                options: [
                     {
-                        "value": "light",
-                        "label": { "en": "Light" }
+                        value: 'light',
+                        label: { en: 'Light' },
                     },
-                    { "value": "dark", "label": { "en": "Dark" } }
-                ]
+                    { value: 'dark', label: { en: 'Dark' } },
+                ],
             },
             defaultValue: 'light',
         },
-        "size": {
-            "label": {
-                "en": "Size",
-                "fr": "Size"
+        size: {
+            label: {
+                en: 'Size',
+                fr: 'Size',
             },
-            "type": "TextSelect",
-            "options": {
-                "options": [
+            type: 'TextSelect',
+            options: {
+                options: [
                     {
-                        "value": "normal",
-                        "label": { "en": "Normal" }
+                        value: 'normal',
+                        label: { en: 'Normal' },
                     },
-                    { "value": "compact", "label": { "en": "Compact" } }
-                ]
+                    { value: 'compact', label: { en: 'Compact' } },
+                ],
             },
             defaultValue: 'normal',
         },
-        "name": {
+        variable: {
+            label: {
+                en: 'Associated variable',
+            },
+            type: 'Variable',
+            options: {
+                types: ['Object'],
+            },
             section: 'settings',
-            "label": {
-                "en": "Name"
+            bindable: true,
+            defaultValue: null,
+        },
+        name: {
+            section: 'settings',
+            label: {
+                en: 'Name',
             },
-            "options": {
-                "placeholder": "Name"
+            options: {
+                placeholder: 'Name',
             },
-            "type": "Text",
-            "bindable": true,
+            type: 'Text',
+            bindable: true,
             defaultValue: 'reCAPTCHA',
         },
-        "key": {
+        key: {
             section: 'settings',
-            "label": {
-                "en": "Site Key reCaptcha v2"
+            label: {
+                en: 'Site Key reCaptcha v2',
             },
-            "options": {
-                "placeholder": "key"
+            options: {
+                placeholder: 'key',
             },
-            "type": "Text",
-            "bindable": true,
+            type: 'Text',
+            bindable: true,
             defaultValue: '',
         },
-        "sendResponse": {
+        sendResponse: {
             section: 'settings',
-            "label": {
-                "en": "Send value at form submit"
+            label: {
+                en: 'Send value at form submit',
             },
-            "type": "OnOff",
+            type: 'OnOff',
             defaultValue: false,
-        }
-    }
-}
+        },
+    },
+};

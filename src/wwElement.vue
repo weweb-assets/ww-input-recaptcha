@@ -6,6 +6,7 @@
             :id="`ww-recaptcha-${wwElementState.uid}`"
             :name="content.name"
             :data-send-response="content.sendResponse"
+            data-callback="wwReCaptchaCallback"
         ></div>
         <!-- wwEditor:start -->
         <div v-if="!content.key" class="ww-recaptcha-placeholder caption-m">
@@ -22,15 +23,39 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
     props: {
         wwElementState: { type: Object, required: true },
         content: { type: Object, required: true },
+        uid: { type: String, required: true },
+    },
+    emits: ['trigger-event'],
+    setup(props) {
+        const internalVariableId = computed(() => props.content.variable);
+        const variableId = wwLib.wwVariable.useComponentVariable(props.uid, 'value', {}, internalVariableId);
+
+        return { variableId };
     },
     data() {
         return {
             isHidden: false,
+            internalValue: {},
         };
+    },
+    computed: {
+        value: {
+            get() {
+                if (this.variableId) return wwLib.wwVariable.getValue(this.variableId);
+                return this.internalValue;
+            },
+            set(value) {
+                this.$emit('trigger-event', { name: 'validate', event: { value } });
+                this.internalValue = value;
+                if (this.variableId) wwLib.wwVariable.updateValue(this.variableId, value);
+            },
+        },
     },
     /* wwEditor:start */
     watch: {
@@ -47,6 +72,9 @@ export default {
     /* wwEditor:end */
     mounted() {
         this.addScript();
+    },
+    created() {
+        window.wwReCaptchaCallback = this.callback;
     },
     methods: {
         addScript() {
@@ -69,6 +97,12 @@ export default {
                 theme: this.content.theme,
                 size: this.content.size,
             });
+        },
+        callback(code) {
+            this.value = {
+                validate: !!code,
+                code: code || null,
+            };
         },
         /* wwEditor:start */
         forceRender() {
