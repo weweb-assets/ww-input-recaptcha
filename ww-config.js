@@ -46,7 +46,7 @@ export default {
             },
             defaultValue: 'normal',
         },
-        variable: {
+        variableId: {
             label: {
                 en: 'Associated variable',
             },
