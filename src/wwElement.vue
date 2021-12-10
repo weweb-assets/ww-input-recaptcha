@@ -33,7 +33,7 @@ export default {
     },
     emits: ['trigger-event'],
     setup(props) {
-        const internalVariableId = computed(() => props.content.variable);
+        const internalVariableId = computed(() => props.content.variableId);
         const variableId = wwLib.wwVariable.useComponentVariable(props.uid, 'value', {}, internalVariableId);
 
         return { variableId };

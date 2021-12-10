@@ -7,7 +7,7 @@ export default {
         menuOptions: {
             quick: {
                 label: { en: 'reCAPTCHA v2' },
-                sections: ['variable', 'theme', 'size'],
+                sections: ['variableId', 'theme', 'size'],
             },
         },
     },
@@ -55,7 +55,6 @@ export default {
                 types: ['Object'],
             },
             section: 'settings',
-            bindable: true,
             defaultValue: null,
         },
         name: {
