@@ -47,29 +47,6 @@ export default {
             },
             defaultValue: 'normal',
         },
-        variableId: {
-            label: {
-                en: 'Associated variable',
-            },
-            type: 'Variable',
-            options: {
-                types: ['Object'],
-            },
-            section: 'settings',
-            defaultValue: null,
-        },
-        name: {
-            section: 'settings',
-            label: {
-                en: 'Name',
-            },
-            options: {
-                placeholder: 'Name',
-            },
-            type: 'Text',
-            bindable: true,
-            defaultValue: 'reCAPTCHA',
-        },
         key: {
             section: 'settings',
             label: {

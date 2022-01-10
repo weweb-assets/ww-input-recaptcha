@@ -4,7 +4,7 @@
             v-if="!isHidden"
             v-show="content.key"
             :id="`ww-recaptcha-${wwElementState.uid}`"
-            :name="content.name"
+            :name="wwElementState.name"
             :data-send-response="content.sendResponse"
             data-callback="wwReCaptchaCallback"
         ></div>
@@ -23,8 +23,6 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-
 export default {
     props: {
         wwElementState: { type: Object, required: true },
@@ -33,27 +31,27 @@ export default {
     },
     emits: ['trigger-event'],
     setup(props) {
-        const internalVariableId = computed(() => props.content.variableId);
-        const variableId = wwLib.wwVariable.useComponentVariable(props.uid, 'value', {}, internalVariableId);
-
-        return { variableId };
+        const { value: variableValue, setValue } = wwLib.wwVariable.useComponentVariable(props.uid, 'value', {
+            validate: false,
+            code: null,
+        });
+        return { variableValue, setValue };
     },
     data() {
         return {
             isHidden: false,
-            internalValue: {},
         };
     },
     computed: {
         value: {
             get() {
-                if (this.variableId) return wwLib.wwVariable.getValue(this.variableId);
-                return this.internalValue;
+                return this.variableValue;
             },
             set(value) {
-                this.$emit('trigger-event', { name: 'validate', event: { value } });
-                this.internalValue = value;
-                if (this.variableId) wwLib.wwVariable.updateValue(this.variableId, value);
+                if (value !== this.variableValue) {
+                    this.$emit('trigger-event', { name: 'validate', event: { value } });
+                    this.setValue(value);
+                }
             },
         },
     },
