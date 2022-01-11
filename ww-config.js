@@ -11,7 +11,7 @@ export default {
             },
         },
     },
-    triggerEvents: [{ name: 'change', label: { en: 'On change' }, event: { value: '' } }],
+    triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' } }],
     properties: {
         theme: {
             label: {

@@ -31,10 +31,17 @@ export default {
     },
     emits: ['trigger-event'],
     setup(props) {
-        const { value: variableValue, setValue } = wwLib.wwVariable.useComponentVariable(props.uid, 'value', {
-            validate: false,
-            code: null,
-        });
+        const { value: variableValue, setValue } = wwLib.wwVariable.useComponentVariable(
+            props.uid,
+            'value',
+            props.content.value === undefined
+                ? {
+                      validate: false,
+                      code: null,
+                  }
+                : props.content.value
+        );
+
         return { variableValue, setValue };
     },
     data() {
@@ -43,16 +50,8 @@ export default {
         };
     },
     computed: {
-        value: {
-            get() {
-                return this.variableValue;
-            },
-            set(value) {
-                if (value !== this.variableValue) {
-                    this.$emit('trigger-event', { name: 'validate', event: { value } });
-                    this.setValue(value);
-                }
-            },
+        value() {
+            return this.variableValue;
         },
     },
     /* wwEditor:start */
@@ -97,10 +96,11 @@ export default {
             });
         },
         callback(code) {
-            this.value = {
+            this.setValue({
                 validate: !!code,
                 code: code || null,
-            };
+            });
+            this.$emit('trigger-event', { name: 'change', event: { value: !this.value } });
         },
         /* wwEditor:start */
         forceRender() {
