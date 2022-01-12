@@ -7,11 +7,11 @@ export default {
         menuOptions: {
             quick: {
                 label: { en: 'reCAPTCHA v2' },
-                sections: ['variableId', 'theme', 'size'],
+                sections: ['theme', 'size'],
             },
         },
     },
-    triggerEvents: [{ name: 'change', label: { en: 'On change' }, event: { value: '' } }],
+    triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' } }],
     properties: {
         theme: {
             label: {
