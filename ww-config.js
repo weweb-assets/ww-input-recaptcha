@@ -7,7 +7,7 @@ export default {
         menuOptions: {
             quick: {
                 label: { en: 'reCAPTCHA v2' },
-                sections: ['variableId', 'theme', 'size'],
+                sections: ['theme', 'size'],
             },
         },
     },

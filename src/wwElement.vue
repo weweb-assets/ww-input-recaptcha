@@ -96,11 +96,12 @@ export default {
             });
         },
         callback(code) {
-            this.setValue({
+            const value = {
                 validate: !!code,
                 code: code || null,
-            });
-            this.$emit('trigger-event', { name: 'change', event: { value: !this.value } });
+            };
+            this.setValue(value);
+            this.$emit('trigger-event', { name: 'change', event: { value } });
         },
         /* wwEditor:start */
         forceRender() {
