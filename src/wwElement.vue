@@ -31,16 +31,17 @@ export default {
     },
     emits: ['trigger-event'],
     setup(props) {
-        const { value: variableValue, setValue } = wwLib.wwVariable.useComponentVariable(
-            props.uid,
-            'value',
-            props.content.value === undefined
-                ? {
-                      validate: false,
-                      code: null,
-                  }
-                : props.content.value
-        );
+        const { value: variableValue, setValue } = wwLib.wwVariable.useComponentVariable({
+            uid: props.uid,
+            name: 'value',
+            defaultValue: props.content.value,
+            sanitizer: value => {
+                if (value === undefined) {
+                    return { validate: false, code: null }
+                }
+                return value
+            }
+        });
 
         return { variableValue, setValue };
     },
