@@ -4,12 +4,6 @@ export default {
             en: 'reCAPTCHA v2',
         },
         icon: 'fontawesome/solid/fingerprint',
-        menuOptions: {
-            quick: {
-                label: { en: 'reCAPTCHA v2' },
-                sections: ['theme', 'size'],
-            },
-        },
     },
     triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' } }],
     properties: {
