@@ -5,7 +5,7 @@ export default {
         },
         icon: 'fontawesome/solid/fingerprint',
     },
-    triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' } }],
+    triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' }, default: true }],
     properties: {
         theme: {
             label: {
