@@ -3,7 +3,7 @@ export default {
         label: {
             en: 'reCAPTCHA v2',
         },
-        icon: 'fontawesome/solid/fingerprint',
+        icon: 'finger-print',
     },
     triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' }, default: true }],
     properties: {
