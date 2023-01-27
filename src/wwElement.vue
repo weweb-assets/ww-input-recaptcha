@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
     props: {
         wwElementState: { type: Object, required: true },
@@ -35,12 +37,9 @@ export default {
             uid: props.uid,
             name: 'value',
             type: 'object',
-            defaultValue: props.content.value === undefined
-                ? {
-                      validate: false,
-                      code: null,
-                  }
-                : props.content.value
+            defaultValue: computed(() => props.content.value === undefined
+                ? { validate: false, code: null }
+                : props.content.value),
         });
 
         return { variableValue, setValue };
