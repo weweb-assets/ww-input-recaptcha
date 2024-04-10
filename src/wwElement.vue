@@ -72,8 +72,15 @@ export default {
         this.addScript();
     },
     created() {
-        window.wwReCaptchaCallback = this.callback;
-        window.wwReCaptchaExpiredCallback = this.expiredCallback;
+        /* wwEditor:start */
+        wwLib.getEditorWindow().wwReCaptchaCallback = this.callback;
+        wwLib.getEditorWindow().wwReCaptchaExpiredCallback = this.expiredCallback;
+        /* wwEditor:end */
+
+        /* wwFront:start */
+        wwLib.getFrontWindow().wwReCaptchaCallback = this.callback;
+        wwLib.getFrontWindow().wwReCaptchaExpiredCallback = this.expiredCallback;
+        /* wwFront:end */
     },
     methods: {
         addScript() {
