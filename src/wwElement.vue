@@ -7,6 +7,7 @@
             :name="wwElementState.name"
             :data-send-response="content.sendResponse"
             data-callback="wwReCaptchaCallback"
+            data-expired-callback="wwReCaptchaExpiredCallback"
         ></div>
         <!-- wwEditor:start -->
         <div v-if="!content.key" class="ww-recaptcha-placeholder caption-m">
@@ -37,9 +38,9 @@ export default {
             uid: props.uid,
             name: 'value',
             type: 'object',
-            defaultValue: computed(() => props.content.value === undefined
-                ? { validate: false, code: null }
-                : props.content.value),
+            defaultValue: computed(() =>
+                props.content.value === undefined ? { validate: false, code: null } : props.content.value
+            ),
         });
 
         return { variableValue, setValue };
@@ -71,7 +72,8 @@ export default {
         this.addScript();
     },
     created() {
-        window.wwReCaptchaCallback = this.callback;
+        wwLib.getFrontWindow().wwReCaptchaCallback = this.callback;
+        wwLib.getFrontWindow().wwReCaptchaExpiredCallback = this.expiredCallback;
     },
     methods: {
         addScript() {
@@ -102,6 +104,9 @@ export default {
             };
             this.setValue(value);
             this.$emit('trigger-event', { name: 'change', event: { value } });
+        },
+        expiredCallback() {
+            this.callback(null);
         },
         /* wwEditor:start */
         forceRender() {
