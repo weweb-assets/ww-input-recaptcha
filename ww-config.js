@@ -5,7 +5,7 @@ export default {
         },
         icon: 'finger-print',
     },
-    triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' }, default: true }],
+    triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' }, default: true, description: "Run when the value changes." }],
     properties: {
         theme: {
             label: {
