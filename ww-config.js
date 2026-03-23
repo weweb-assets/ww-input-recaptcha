@@ -5,7 +5,7 @@ export default {
         },
         icon: 'finger-print',
     },
-    triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' }, default: true, description: "Run when the value changes." }],
+    triggerEvents: [{ name: 'change', label: { en: 'Change' }, event: { value: '' }, default: true, description: "Run when the user completes or resets the captcha." }],
     properties: {
         theme: {
             label: {
